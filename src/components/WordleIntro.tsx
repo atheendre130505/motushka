@@ -165,7 +165,7 @@ export default function WordleIntro({ onUnlock }: WordleIntroProps) {
                 })}
             </div>
 
-            <div className="w-full max-w-lg space-y-2 mt-4 sm:mt-12 px-2 z-20">
+            <div className="w-full max-w-lg space-y-2 mt-4 sm:mt-8 px-1 sm:px-2 z-20">
                 {KEYBOARD_ROWS.map((row, i) => (
                     <div key={i} className="flex justify-center gap-1 sm:gap-2">
                         {row.map(key => {
