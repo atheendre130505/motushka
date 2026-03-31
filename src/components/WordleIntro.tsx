@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { LockOpen } from 'lucide-react';
+import { Unlock } from 'lucide-react';
 
 interface WordleIntroProps {
     onUnlock: () => void;
@@ -196,7 +196,7 @@ export default function WordleIntro({ onUnlock }: WordleIntroProps) {
                         animate={{ opacity: 1, scale: 1 }}
                         className="absolute inset-0 bg-midnight/90 backdrop-blur-sm z-40 flex items-center justify-center flex-col text-electric"
                     >
-                        <LockOpen size={64} className="mb-4 animate-bounce text-acid" />
+                        <Unlock size={64} className="mb-4 animate-bounce text-acid" />
                         <h2 className="text-3xl text-center font-cinematic font-bold">Word Unlocked!</h2>
                     </motion.div>
                 )}
