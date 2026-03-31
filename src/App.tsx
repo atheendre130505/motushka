@@ -3,8 +3,10 @@ import Scene1Arrival from './components/Scene1Arrival';
 import Scene2Tease from './components/Scene2Tease';
 import Scene3DeepDive from './components/Scene3DeepDive';
 import Scene4DateMap from './components/Scene4DateMap';
+import WordleIntro from './components/WordleIntro';
 
 function App() {
+    const [wordleComplete, setWordleComplete] = useState(false);
     const [introComplete, setIntroComplete] = useState(false);
 
     useEffect(() => {
@@ -23,7 +25,9 @@ function App() {
 
             {/* Main Container */}
             <div className="relative z-10 w-full">
-                {!introComplete ? (
+                {!wordleComplete ? (
+                    <WordleIntro onUnlock={() => setWordleComplete(true)} />
+                ) : !introComplete ? (
                     <Scene1Arrival onNext={() => setIntroComplete(true)} />
                 ) : (
                     <div className="flex flex-col">
