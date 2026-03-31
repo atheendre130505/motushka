@@ -111,7 +111,7 @@ export default function WordleIntro({ onUnlock }: WordleIntroProps) {
 
     return (
         <div className="w-full min-h-screen flex flex-col items-center justify-center bg-midnight overflow-hidden px-4 py-8">
-            <h1 className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-electric via-crimson to-gold drop-shadow-[0_0_10px_rgba(255,0,127,0.5)] mb-8 tracking-widest text-center">
+            <h1 className="text-xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-electric via-crimson to-gold drop-shadow-[0_0_10px_rgba(255,0,127,0.5)] mb-4 tracking-widest text-center">
                 GUESS THE WORD
             </h1>
 
@@ -128,13 +128,13 @@ export default function WordleIntro({ onUnlock }: WordleIntroProps) {
                 )}
             </AnimatePresence>
 
-            <div className="grid gap-2 mb-8">
+            <div className="grid gap-1.5 mb-4">
                 {Array.from({ length: MAX_GUESSES }).map((_, rowIndex) => {
                     const guess = guesses[rowIndex] || (rowIndex === guesses.length ? currentGuess : '');
                     const isSubmitted = rowIndex < guesses.length;
 
                     return (
-                        <div key={rowIndex} className="flex gap-2 justify-center">
+                        <div key={rowIndex} className="flex gap-1.5 justify-center">
                             {Array.from({ length: WORD_LENGTH }).map((_, colIndex) => {
                                 const letter = guess[colIndex] || '';
                                 let bgColor = 'bg-transparent border-gray-600';
@@ -154,7 +154,7 @@ export default function WordleIntro({ onUnlock }: WordleIntroProps) {
                                         initial={isSubmitted ? { rotateX: 90 } : { scale: letter ? 1.1 : 1 }}
                                         animate={isSubmitted ? { rotateX: 0 } : { scale: 1 }}
                                         transition={isSubmitted ? { delay: colIndex * 0.1, duration: 0.4 } : { duration: 0.1 }}
-                                        className={`w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center border-2 text-2xl sm:text-3xl font-bold uppercase rounded ${bgColor}`}
+                                        className={`w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center border-2 text-xl sm:text-2xl font-bold uppercase rounded ${bgColor}`}
                                     >
                                         {letter}
                                     </motion.div>
@@ -165,9 +165,9 @@ export default function WordleIntro({ onUnlock }: WordleIntroProps) {
                 })}
             </div>
 
-            <div className="w-full max-w-lg space-y-2 mt-4 sm:mt-8 px-1 sm:px-2 z-20">
+            <div className="w-full max-w-md space-y-1.5 mt-2 px-2 z-20">
                 {KEYBOARD_ROWS.map((row, i) => (
-                    <div key={i} className="flex justify-center gap-1 sm:gap-2">
+                    <div key={i} className="flex justify-center gap-1">
                         {row.map(key => {
                             const isSpecial = key === 'ENTER' || key === 'BACKSPACE';
                             return (
@@ -175,8 +175,8 @@ export default function WordleIntro({ onUnlock }: WordleIntroProps) {
                                     key={key}
                                     onClick={() => onKeyPress(key)}
                                     className={`
-                    ${isSpecial ? 'px-2 sm:px-4 text-xs sm:text-sm' : 'w-8 sm:w-10 text-sm sm:text-base'} 
-                    h-12 sm:h-14 rounded font-bold transition-all active:scale-95 flex items-center justify-center
+                    ${isSpecial ? 'px-2 text-xs' : 'w-7 sm:w-8 text-xs sm:text-sm'} 
+                    h-9 sm:h-10 rounded font-bold transition-all active:scale-95 flex items-center justify-center
                     ${getKeyColor(key)} 
                     ${!isSpecial && getKeyColor(key) === 'bg-gray-800' ? 'hover:bg-gray-700' : ''}
                   `}
